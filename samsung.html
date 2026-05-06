@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ElectroSpace — Товар</title>
+
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        
+        .top-bar {
+            background-color: #000;
+            color: #fff;
+            padding: 15px;
+            font-size: 24px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            flex-wrap: wrap;
+        }
+
+        
+        .home-link {
+            position: absolute;
+            left: 20px;
+            color: #fff;
+            font-size: 20px;
+            text-decoration: none;
+        }
+
+        .home-link:hover {
+            text-decoration: underline;
+        }
+
+        
+        .container {
+            display: flex;
+            padding: 20px;
+            gap: 20px;
+        }
+
+        
+        .product-image {
+            flex: 1;
+        }
+
+        .product-image img {
+            width: 100%;
+            border-radius: 8px;
+            height: auto;
+            object-fit: contain;
+        }
+
+        
+        .product-info {
+            flex: 1;
+            padding-left: 20px;
+        }
+
+        .price {
+            font-size: 36px;
+            color: #2b7cff;
+            margin-bottom: 15px;
+            font-weight: bold;
+        }
+
+        .description {
+            margin-bottom: 25px;
+            font-size: 20px;
+            line-height: 1.4;
+        }
+
+        
+        .buy-btn {
+            display: inline-block;
+            padding: 12px 25px;
+            background-color: #2b7cff;
+            color: #fff;
+            font-size: 20px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .buy-btn:hover {
+            background-color: #1a5bcc;
+        }
+
+        .specs-title {
+            font-size: 24px;
+            margin: 30px 20px 10px 20px;
+        }
+
+        table {
+            width: 95%;
+            margin: 0 auto 40px auto;
+            border-collapse: collapse;
+        }
+
+        table, th, td {
+            border: 1px solid #999;
+        }
+
+        th, td {
+            padding: 10px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+
+        
+        @media (max-width: 600px) {
+            .container {
+                flex-direction: column;
+                padding: 10px;
+            }
+
+            .product-info {
+                padding-left: 0;
+                margin-top: 20px;
+            }
+
+            .price {
+                font-size: 28px;
+            }
+
+            .description {
+                font-size: 18px;
+            }
+
+            .buy-btn {
+                width: 100%;
+                font-size: 18px;
+                padding: 12px 0;
+            }
+
+            .specs-title {
+                font-size: 20px;
+                margin: 20px 10px 10px 10px;
+            }
+
+            table {
+                width: 100%;
+                font-size: 16px;
+            }
+
+            th, td {
+                padding: 8px;
+            }
+
+            .top-bar {
+                font-size: 20px;
+                padding: 10px;
+            }
+
+            .home-link {
+                font-size: 18px;
+                left: 10px;
+            }
+        }
+    </style>
+
+</head>
+<body>
+
+    <div class="top-bar">
+        <a href="index.html" class="home-link">Головна</a>
+        ElectroSpace
+    </div>
+
+    <div class="container">
+
+        <!-- Фото товару -->
+        <div class="product-image">
+            <img src="images/phone.webp" alt="Фото товару">
+        </div>
+
+        <!-- Інформація про товар -->
+        <div class="product-info">
+            <div class="price">Ціна: 45 999 грн</div>
+
+            <div class="description">
+                Samsung Galaxy S25 Ultra — флагманський смартфон нового покоління,
+                що поєднує високу продуктивність, потужні камери та преміальний дизайн.
+            </div>
+
+            <a class="buy-btn">Купити</a>
+        </div>
+
+    </div>
+
+    <div class="specs-title">Характеристики</div>
+
+    <table>
+        <tr>
+            <th>Параметр</th>
+            <th>Значення</th>
+        </tr>
+        <tr>
+            <td>Дисплей</td>
+            <td>6.9" AMOLED 120Hz</td>
+        </tr>
+        <tr>
+            <td>Процесор</td>
+            <td>Snapdragon 8 Elite</td>
+        </tr>
+        <tr>
+            <td>Оперативна памʼять</td>
+            <td>12 GB</td>
+        </tr>
+        <tr>
+            <td>Батарея</td>
+            <td>5000 мА·год</td>
+        </tr>
+    </table>
+
+</body>
+</html>

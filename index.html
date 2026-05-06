@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ElectroSpace</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.CSS">
+    <style>
+    body {
+        font-family: 'Inter', Arial, sans-serif;
+    }
+
+    /* Modal styles */
+    .modal-overlay{
+        position: fixed;
+        inset: 0;
+        background: rgba(0,0,0,0.5);
+        display: none;
+        align-items: center;
+        justify-content: center;
+        z-index: 1000;
+    }
+    .modal-overlay.active{ display: flex; }
+    .modal-content{
+        background: #fff;
+        padding: 20px 22px;
+        border-radius: 8px;
+        width: 320px;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        position: relative;
+        font-family: 'Inter', Arial, sans-serif;
+    }
+    .modal-close{
+        position: absolute;
+        right: 10px;
+        top: 6px;
+        font-size: 20px;
+        color: #666;
+        cursor: pointer;
+    }
+    .modal-content h2{ margin: 0 0 12px 0; font-size: 18px; font-weight: 700; }
+    .modal-field{ margin-bottom: 12px; }
+    .modal-field label{ font-size: 13px; font-weight: 500; color: #333; }
+    .modal-field input{
+        width: 100%;
+        padding: 8px 10px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        box-sizing: border-box;
+        font-family: 'Inter', Arial, sans-serif;
+    }
+    .helper-text{ font-size: 13px; color: #666; margin-top: 6px; }
+    .helper-text.error{ color: #c92a2a; }
+    .login-actions{ margin-top: 14px; display:flex; gap:8px; align-items:center; }
+    .login-btn-modal{
+        padding: 8px 14px;
+        border-radius: 6px;
+        border: none;
+        cursor: pointer;
+        background: #2b7cff;
+        color: #fff;
+        font-weight: 600;
+        font-family: 'Inter', Arial, sans-serif;
+    }
+    .login-btn-modal[disabled]{
+        opacity: 0.6;
+        cursor: not-allowed;
+    }
+    .glow{
+        animation: glow 1.6s infinite ease-in-out;
+        box-shadow: 0 0 10px rgba(43,124,255,0.6);
+    }
+    @keyframes glow{
+        0%{ box-shadow: 0 0 6px rgba(43,124,255,0.35); }
+        50%{ box-shadow: 0 0 18px rgba(43,124,255,0.6); }
+        100%{ box-shadow: 0 0 6px rgba(43,124,255,0.35); }
+    }
+    @media (max-width:360px){ .modal-content{ width: 92%; } }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="logo">ElectroSpace</div>
+    <div class="square"></div>
+    <input type="text" id="searchBar" placeholder="Пошук товарів...">
+    <a href="#" class="login-btn" id="openLogin">Login</a>
+</header>
+
+<!-- Modal login form -->
+<div id="loginModal" class="modal-overlay" aria-hidden="true">
+    <div class="modal-content" role="dialog" aria-modal="true" aria-labelledby="loginTitle">
+        <div class="modal-close" id="modalClose" title="Close">&times;</div>
+        <h2 id="loginTitle">Log in</h2>
+        <div class="modal-field">
+            <label for="modalEmail">Email</label>
+            <input id="modalEmail" type="email" placeholder="you@example.com" autocomplete="email">
+        </div>
+        <div class="modal-field">
+            <label for="modalPassword">Password</label>
+            <input id="modalPassword" type="password" placeholder="Password" autocomplete="current-password">
+        </div>
+        <div id="helperText" class="helper-text">Please enter your email and password</div>
+        <div class="login-actions">
+            <button id="modalSubmit" class="login-btn-modal" disabled>Log in</button>
+        </div>
+    </div>
+</div>
+
+<div class="products">
+    <div class="product">
+        <a href="samsung.html"><img src="images/phone.webp" alt="product"></a>
+        <a href="samsung.html"><h4>Samsung Galaxy S25 Ultra</h4></a>
+        <p>60000 грн</p>
+    </div>
+    <div class="product">
+        <a href="навушники.html"><img src="images/heard.webp"></a>
+        <a href="навушники.html"><h4>Навушники Redmi Buds 5 Pro</h4></a>
+        <p>2000 грн</p>
+    </div>
+    <div class="product">
+        <a href="t3.html"><img src="images/965.png"></a>
+        <a href="t3.html"><h4>Ноутбук LENOVO IdeaPad Slim</h4></a>
+        <p>20000 грн</p>
+    </div>
+    <div class="product">
+        <a href="t4.html"><img src="images/1333.webp"></a>
+        <a href="t4.html"><h4>Power Bank Xiaomi 10000mAh</h4></a>
+        <p>999 грн</p>
+    </div>
+    <div class="product">
+        <a href="t5.html"><img src="images/122.webp"></a>
+        <a href="t5.html"><h4>Apple Watch SE 3</h4></a>
+        <p>12000 грн</p>
+    </div>
+    <div class="product">
+        <a href="t6.html"><img src="images/166.webp"></a>
+        <a href="t6.html"><h4>Портативна акустика JBL GO 4</h4></a>
+        <p>1499 грн</p>
+    </div>
+    <div class="product">
+        <a href="t7.html"><img src="images/177.webp"></a>
+        <a href="t7.html"><h4>Геймпад Microsoft Xbox</h4></a>
+        <p>2999 грн</p>
+    </div>
+    <div class="product">
+        <a href="t8.html"><img src="images/188.webp"></a>
+        <a href="t8.html"><h4>Wi-Fi роутер Xiaomi Mi</h4></a>
+        <p>500 грн</p>
+    </div>
+    <div class="product">
+        <a href="t9.html"><img src="images/144.webp"></a>
+        <a href="t9.html"><h4>Монітор ігровий GIGABYTE 28"</h4></a>
+        <p>15999 грн</p>
+    </div>
+    <div class="product">
+        <a href="t10.html"><img src="images/155.webp"></a>
+        <a href="t10.html"><h4>Клавіатура ігрова Logitech G213</h4></a>
+        <p>1200 грн</p>
+    </div>
+</div>
+
+<div class="multimedia">
+
+    <div class="multimedia-video">
+        <video controls>
+            <source src="video/movie.mp4" type="video/mp4">
+        </video>
+    </div>
+
+    <div class="multimedia-video">
+        <video controls>
+            <source src="video/movie.mp4" type="video/mp4">
+        </video>
+    </div>
+
+    <div class="multimedia-video">
+        <video controls>
+            <source src="video/movie.mp4" type="video/mp4">
+        </video>
+    </div>
+
+</div>
+
+<script>
+document.getElementById("searchBar").addEventListener("input", function () {
+    let text = this.value.toLowerCase();
+    let products = document.querySelectorAll(".product");
+    products.forEach(product => {
+        let name = product.querySelector("h4").textContent.toLowerCase();
+        product.style.display = name.includes(text) ? "block" : "none";
+    });
+});
+</script>
+
+<script>
+(function(){
+    const openLogin = document.getElementById('openLogin');
+    const modal = document.getElementById('loginModal');
+    const modalClose = document.getElementById('modalClose');
+    const modalContent = document.querySelector('.modal-content');
+    const email = document.getElementById('modalEmail');
+    const password = document.getElementById('modalPassword');
+    const helper = document.getElementById('helperText');
+    const submitBtn = document.getElementById('modalSubmit');
+    let touched = false;
+
+    function openModal(e){
+        if(e) e.preventDefault();
+        modal.classList.add('active');
+        modal.setAttribute('aria-hidden','false');
+        resetFormState();
+        email.focus();
+    }
+    function closeModal(){
+        modal.classList.remove('active');
+        modal.setAttribute('aria-hidden','true');
+    }
+    function resetFormState(){
+        touched = false;
+        email.value = '';
+        password.value = '';
+        submitBtn.disabled = true;
+        submitBtn.classList.remove('glow');
+        submitBtn.textContent = 'Log in';
+        helper.classList.remove('error');
+        helper.textContent = 'Please enter your email and password';
+    }
+    function updateFormState(){
+        const eVal = email.value.trim();
+        const pVal = password.value.trim();
+        const missing = [];
+        if(!eVal) missing.push('email');
+        if(!pVal) missing.push('password');
+        if(missing.length === 0){
+            submitBtn.disabled = false;
+            submitBtn.classList.add('glow');
+            helper.classList.remove('error');
+            helper.textContent = '';
+        } else {
+            submitBtn.disabled = true;
+            submitBtn.classList.remove('glow');
+            if(touched){
+                helper.classList.add('error');
+                if(missing.length === 2) helper.textContent = 'Please enter your email and password';
+                else if(missing[0] === 'email') helper.textContent = 'Please enter your email';
+                else helper.textContent = 'Please enter your password';
+            }
+        }
+    }
+    openLogin.addEventListener('click', openModal);
+    modalClose.addEventListener('click', closeModal);
+    modal.addEventListener('click', function(e){ if(e.target === modal) closeModal(); });
+    modalContent.addEventListener('click', function(e){ e.stopPropagation(); });
+    [email, password].forEach(input => {
+        input.addEventListener('input', function(){ touched = true; updateFormState(); });
+        input.addEventListener('focus', function(){ touched = true; updateFormState(); });
+    });
+    submitBtn.addEventListener('click', function(e){
+        e.preventDefault();
+        if(submitBtn.disabled) return;
+        submitBtn.classList.remove('glow');
+        submitBtn.textContent = 'Submitted';
+        submitBtn.disabled = true;
+    });
+})();
+</script>
+
+</body>
+</html>
